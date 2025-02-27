@@ -1,37 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Safwat Khan's Professional Portfolio
 
-## Getting Started
+## 🚀 About the Project
 
-First, run the development server:
+This is a personal portfolio website showcasing my professional journey as a DevOps Engineer and Web Developer. Built with modern web technologies, the site highlights my skills, experiences, and projects.
 
+## 🛠 Tech Stack
+
+- **Frontend**: Next.js 14
+- **Styling**: Tailwind CSS
+- **Animation**: Framer Motion
+- **Icons**: Lucide React
+- **Form Validation**: Zod
+- **Deployment**: Vercel
+
+## 📋 Features
+
+- Responsive design
+- Dark/Light mode toggle
+- Animated page transitions
+- Contact form with validation
+- Detailed professional overview
+- Project showcase
+- Resume download
+
+## 🌟 Key Sections
+
+- Home
+- About
+- Projects
+- Experience
+- Contact
+- Resume
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/saf2k/portfolio.git
+cd portfolio
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Environment Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` file with:
+```
+NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_WEB_APP_URL=your_google_apps_script_url
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Scripts
 
-## Learn More
+- `dev`: Start development server
+- `build`: Create production build
+- `start`: Start production server
+- `lint`: Run ESLint
 
-To learn more about Next.js, take a look at the following resources:
+## 🌐 Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deployed on Vercel. Automatic deployments on push to main branch.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📬 Contact
 
-## Deploy on Vercel
+- **Email**: safwat.s.khan@gmail.com
+- **LinkedIn**: [Safwat S Khan](https://linkedin.com/in/safwat-s-khan/)
+- **GitHub**: [@saf2k](https://github.com/saf2k)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Portfolio-V2
+This project is open-source and available under the MIT License.
+
+---
+
+*Built with ❤️ by Safwat Khan*
