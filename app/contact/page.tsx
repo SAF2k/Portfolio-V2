@@ -75,14 +75,14 @@ type ContactFormData = z.infer<typeof ContactSchema>
 
 // Sanitization function
 const sanitizeInput = (input: string) => {
-  // Only escape potentially dangerous HTML characters
   return input
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;')
+    .replace(/'/g, '&apos;')
 }
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -98,7 +98,6 @@ export default function ContactPage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     
-    // Sanitize input on change
     const sanitizedValue = sanitizeInput(value)
     
     setFormData(prev => ({
@@ -106,12 +105,10 @@ export default function ContactPage() {
       [name]: sanitizedValue
     }))
 
-    // Update character count for message
     if (name === 'message') {
       setMessageCharCount(sanitizedValue.trim().length)
     }
 
-    // Clear errors when user starts typing
     if (errors[name as keyof ContactFormData]) {
       setErrors(prev => ({
         ...prev,
@@ -125,17 +122,15 @@ export default function ContactPage() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
     setErrors({})
-
+  
     try {
-      // Validate form data
       const validatedData = ContactSchema.parse(formData)
       
-      // Submit to Google Sheets using Google Apps Script Web App
-      const response = await fetch(
+      await fetch(
         process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_WEB_APP_URL || '', 
         {
           method: 'POST',
-          mode: 'no-cors', // Important for Google Sheets API
+          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -147,8 +142,7 @@ export default function ContactPage() {
           })
         }
       )
-
-      // Reset form and show success
+  
       setSubmitStatus('success')
       setFormData({
         name: '',
@@ -158,7 +152,7 @@ export default function ContactPage() {
       setMessageCharCount(0)
     } catch (error) {
       console.error('Submission error:', error)
-
+  
       if (error instanceof z.ZodError) {
         const fieldErrors: Partial<ContactFormData> = {}
         error.errors.forEach(err => {
@@ -168,7 +162,7 @@ export default function ContactPage() {
         })
         setErrors(fieldErrors)
       }
-
+  
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -198,7 +192,6 @@ export default function ContactPage() {
       }
     }
   }
-
   return (
     <motion.div
       initial="hidden"
@@ -216,15 +209,14 @@ export default function ContactPage() {
           <h1 className="text-4xl md:text-5xl font-bold 
                  bg-gradient-to-r from-primary to-secondary 
                  text-transparent bg-clip-text mb-6 flex items-center gap-4">
-            {/* <MessageCircle className="w-8 md:w-10 h-8 md:h-10 text-primary animate-pulse" /> */}
             Get In Touch
             <Send className="w-8 md:w-10 h-8 md:h-10 text-primary animate-pulse" />
           </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p>
             Passionate about solving complex technical challenges
             and creating innovative solutions. Whether you have a
             project, collaboration opportunity, or just want to
-            discuss emerging technologies, I'm eager to connect.
+            discuss emerging technologies, I&apos;m eager to connect.
           </p>
         </motion.div>
 
@@ -320,19 +312,19 @@ export default function ContactPage() {
               <Button
                 type="submit"
                 className="w-full group"
-                disabled={isSubmitting || submitStatus === 'success'}
+                disabled={isSubmitting || submitStatus === `success`}
               >
                 {isSubmitting ? (
                   <>
                     <Send className="mr-2 animate-pulse" />
                     Sending...
                   </>
-                ) : submitStatus === 'success' ? (
+                ) : submitStatus === `success` ? (
                   <>
                     <CheckCircle2 className="mr-2 text-green-500" />
                     Message Sent
                   </>
-                ) : submitStatus === 'error' ? (
+                ) : submitStatus === `error` ? (
                   <>
                     <AlertTriangle className="mr-2 text-destructive" />
                     Try Again
@@ -346,12 +338,12 @@ export default function ContactPage() {
               </Button>
 
               {/* Status Messages */}
-              {submitStatus === 'success' && (
+              {submitStatus === `success` && (
                 <p className="text-center text-green-600 text-sm mt-4">
-                  Thank you! I'll get back to you soon.
+                  Thank you! I will get back to you soon.
                 </p>
               )}
-              {submitStatus === 'error' && (
+              {submitStatus === `error` && (
                 <p className="text-center text-destructive text-sm mt-4">
                   Oops! Something went wrong. Please try again.
                 </p>

@@ -2,6 +2,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { 
   Server, 
@@ -19,36 +20,36 @@ const PROJECTS = [
     description: 'Scalable microservices architecture with advanced Kubernetes orchestration and multi-cloud deployment.',
     technologies: ['Kubernetes', 'Docker', 'Terraform', 'AWS EKS', 'Helm'],
     category: 'DevOps',
-    githubLink: 'https://github.com/username/k8s-microservices',
+    githubLink: 'https://github.com/saf2k/k8s-microservices',
     liveLink: '#',
-    image: '/project-images/k8s-microservices.png'
+    image: '/images.png'
   },
   {
     title: 'Next.js Restaurant Management System',
     description: 'Full-stack web application with serverless architecture, real-time analytics, and robust authentication.',
     technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Vercel'],
     category: 'Next.js',
-    githubLink: 'https://github.com/username/restaurant-management',
+    githubLink: 'https://github.com/saf2k/restaurant-management',
     liveLink: 'https://restaurant-management.vercel.app',
-    image: '/project-images/restaurant-platform.png'
+    image: '/images.png'
   },
   {
     title: 'CI/CD Pipeline Automation',
     description: 'Comprehensive CI/CD solution with automated testing, security scanning, and multi-environment deployments.',
     technologies: ['GitHub Actions', 'Docker', 'Terraform', 'SonarQube', 'Prometheus'],
     category: 'DevOps',
-    githubLink: 'https://github.com/username/cicd-automation',
+    githubLink: 'https://github.com/saf2k/cicd-automation',
     liveLink: '#',
-    image: '/project-images/cicd-pipeline.png'
+    image: '/images.png'
   },
   {
     title: 'Cloud-Native Next.js Application',
     description: 'Serverless Next.js application with distributed tracing, performance monitoring, and auto-scaling.',
     technologies: ['Next.js', 'AWS Lambda', 'CloudWatch', 'OpenTelemetry', 'Grafana'],
     category: 'Next.js',
-    githubLink: 'https://github.com/username/cloud-native-nextjs',
+    githubLink: 'https://github.com/saf2k/cloud-native-nextjs',
     liveLink: 'https://cloud-native-app.vercel.app',
-    image: '/project-images/cloud-native-nextjs.png'
+    image: '/images.png'
   }
 ]
 
@@ -115,45 +116,49 @@ export default function ProjectsPage() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-secondary/5 rounded-2xl border border-border/30 
-                         shadow-xl backdrop-blur-sm overflow-hidden 
-                         hover:border-primary/30 transition-all"
-            >
-              {/* Project Image */}
-              <div className="relative">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute top-4 right-4 flex space-x-2">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredProjects.map((project, index) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className="bg-secondary/5 rounded-2xl border border-border/30 
+                       shadow-xl backdrop-blur-sm overflow-hidden 
+                       hover:border-primary/30 transition-all"
+          >
+            {/* Project Image */}
+            <div className="relative">
+              <Image 
+                src={project.image} 
+                alt={project.title} 
+                width={400}
+                height={200}
+                className="w-full h-48 object-cover"
+              />
+              <div className="absolute top-4 right-4 flex space-x-2">
+                <motion.a 
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2 }}
+                  className="bg-secondary/20 p-2 rounded-full"
+                >
+                  <Github className="w-5 h-5" />
+                </motion.a>
+                {project.liveLink !== '#' && (
                   <motion.a 
-                    href={project.githubLink}
+                    href={project.liveLink}
                     target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.2 }}
                     className="bg-secondary/20 p-2 rounded-full"
                   >
-                    <Github className="w-5 h-5" />
+                    <ExternalLink className="w-5 h-5" />
                   </motion.a>
-                  {project.liveLink !== '#' && (
-                    <motion.a 
-                      href={project.liveLink}
-                      target="_blank"
-                      whileHover={{ scale: 1.2 }}
-                      className="bg-secondary/20 p-2 rounded-full"
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                    </motion.a>
-                  )}
-                </div>
+                )}
               </div>
+            </div>
 
               {/* Project Details */}
               <div className="p-4">

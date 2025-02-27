@@ -99,7 +99,7 @@ export default function ExperiencePage() {
 
         {/* Experience Timeline */}
         <div className="space-y-8">
-          {EXPERIENCES.map((exp, index) => (
+          {EXPERIENCES.map((exp) => (
             <motion.div 
               key={exp.company}
               variants={itemVariants}

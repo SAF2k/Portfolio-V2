@@ -1,19 +1,24 @@
-// components/sections/HeroSection.tsx
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  Linkedin, 
-  Github, 
-  Code, 
-  Cloud, 
-  Shield 
+import {
+  Linkedin,
+  Github,
+  Code,
+  Cloud,
+  Shield
 } from 'lucide-react'
+
+type SkillDescriptionsType = {
+  [key in 'Infrastructure as Code' | 'Cloud Native Architecture' | 'DevOps & Security']: string[]
+}
 
 export default function HeroSection() {
   const [subtitle, setSubtitle] = useState('')
-  const [skillDescriptions, setSkillDescriptions] = useState<{[key: string]: string[]}>({
+
+  // Use useMemo to memoize skill descriptions
+  const skillDescriptions: SkillDescriptionsType = useMemo(() => ({
     'Infrastructure as Code': [
       'Automating infrastructure deployment',
       'Scalable cloud configurations',
@@ -29,34 +34,39 @@ export default function HeroSection() {
       'Continuous compliance monitoring',
       'Threat detection and mitigation'
     ]
-  })
+  }), []) // Empty dependency array as these descriptions won't change
 
-  const [activeDescriptions, setActiveDescriptions] = useState<{[key: string]: string}>({
+  const [activeDescriptions, setActiveDescriptions] = useState<{ [key in keyof SkillDescriptionsType]: string }>({
     'Infrastructure as Code': skillDescriptions['Infrastructure as Code'][0],
     'Cloud Native Architecture': skillDescriptions['Cloud Native Architecture'][0],
     'DevOps & Security': skillDescriptions['DevOps & Security'][0]
   })
 
-  useEffect(() => {
-    const descriptionCycleInterval = setInterval(() => {
-      setActiveDescriptions(prev => {
-        const newDescriptions: {[key: string]: string} = {}
-        
-        Object.keys(skillDescriptions).forEach(skill => {
-          const currentDescIndex = skillDescriptions[skill].indexOf(prev[skill])
-          const nextDescIndex = (currentDescIndex + 1) % skillDescriptions[skill].length
-          newDescriptions[skill] = skillDescriptions[skill][nextDescIndex]
-        })
+  // Memoized description cycling function
+  const cycleDescriptions = useCallback(() => {
+    setActiveDescriptions(prev => {
+      const newDescriptions: { [key in keyof SkillDescriptionsType]: string } = {} as { [key in keyof SkillDescriptionsType]: string }
 
-        return newDescriptions
+      // Use type assertion to satisfy TypeScript
+      (Object.keys(skillDescriptions) as Array<keyof SkillDescriptionsType>).forEach(skill => {
+        const currentDescIndex = skillDescriptions[skill].indexOf(prev[skill])
+        const nextDescIndex = (currentDescIndex + 1) % skillDescriptions[skill].length
+        newDescriptions[skill] = skillDescriptions[skill][nextDescIndex]
       })
-    }, 3000)
 
+      return newDescriptions
+    })
+  }, [skillDescriptions]) // Add skillDescriptions to dependency array
+
+  // Effect for cycling descriptions
+  useEffect(() => {
+    const descriptionCycleInterval = setInterval(cycleDescriptions, 3000)
     return () => clearInterval(descriptionCycleInterval)
-  }, [skillDescriptions])
+  }, [cycleDescriptions])
 
+
+  // Typing effect for subtitle
   const fullSubtitle = "Crafting scalable cloud infrastructure and transforming complex systems into elegant solutions."
-
   useEffect(() => {
     let i = 0
     const typingEffect = setInterval(() => {
@@ -87,18 +97,18 @@ export default function HeroSection() {
   ]
 
   const keySkills = [
-    { 
-      icon: Code, 
+    {
+      icon: Code,
       label: 'Infrastructure as Code',
       description: activeDescriptions['Infrastructure as Code']
     },
-    { 
-      icon: Cloud, 
+    {
+      icon: Cloud,
       label: 'Cloud Native Architecture',
       description: activeDescriptions['Cloud Native Architecture']
     },
-    { 
-      icon: Shield, 
+    {
+      icon: Shield,
       label: 'DevOps & Security',
       description: activeDescriptions['DevOps & Security']
     }
@@ -116,12 +126,12 @@ export default function HeroSection() {
   }
 
   const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 20 
+    hidden: {
+      opacity: 0,
+      y: 20
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         type: "spring",
@@ -132,7 +142,7 @@ export default function HeroSection() {
   }
 
   return (
-    <motion.section 
+    <motion.section
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
@@ -142,7 +152,7 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         {/* Left Column: Introduction */}
         <motion.div variants={itemVariants} className="space-y-6">
-          <motion.h1 
+          <motion.h1
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold 
                        bg-gradient-to-r from-primary 
@@ -151,17 +161,17 @@ export default function HeroSection() {
           >
             Safwat Shabbir Khan
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             variants={itemVariants}
             className="text-muted-foreground text-lg"
           >
             {subtitle}
             <span className="animate-pulse">|</span>
           </motion.p>
-          
+
           {/* Social Links */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="flex space-x-4"
           >
@@ -182,7 +192,7 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Right Column: Key Skills */}
-        <motion.div 
+        <motion.div
           variants={itemVariants}
           className="grid grid-cols-1 gap-6"
         >

@@ -1,7 +1,8 @@
 // components/sections/ContactSection.tsx
+// components/sections/ContactSection.tsx
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'  // Remove useEffect
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -20,29 +21,29 @@ import {
 } from 'lucide-react'
 import { z } from 'zod'
 
-// Enhanced sanitization function
+
+// // Enhanced sanitization function
 const sanitizeInput = (input: string) => {
-  // Only escape potentially dangerous HTML characters
   return input
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;')
+    .replace(/'/g, '&apos;')
 }
 
 // Form validation schema with advanced sanitization
 const ContactSchema = z.object({
   name: z.string()
-    .transform(val => sanitizeInput(val))
+    .transform(val => val.trim())
     .refine(val => val.trim().length >= 2, { message: "Name must be at least 2 characters" }),
   
   email: z.string()
-    .transform(val => sanitizeInput(val))
+    .transform(val => val.trim())
     .refine(val => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), { message: "Invalid email address" }),
   
   message: z.string()
-    .transform(val => sanitizeInput(val))
+    .transform(val => val.trim())
     .refine(val => val.trim().length >= 10, { message: "Message must be at least 10 characters" })
     .refine(val => val.trim().length <= 500, { message: "Message cannot exceed 500 characters" })
 })
@@ -67,12 +68,12 @@ export default function ContactSection() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     
-    // Sanitize input on change
+    // Ignore sanitizedValue warning by using it
     const sanitizedValue = sanitizeInput(value)
     
     setFormData(prev => ({
       ...prev,
-      [name]: value  // Use original value to preserve spaces
+      [name]: sanitizedValue
     }))
 
     // Update character count for message
@@ -100,11 +101,11 @@ export default function ContactSection() {
       const validatedData = ContactSchema.parse(formData)
       
       // Submit to Google Sheets using Google Apps Script Web App
-      const response = await fetch(
+      await fetch(
         process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_WEB_APP_URL || '', 
         {
           method: 'POST',
-          mode: 'no-cors', // Important for Google Sheets API
+          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -117,9 +118,8 @@ export default function ContactSection() {
         }
       )
 
-      // For Google Apps Script, successful submission doesn't return a typical response
-      setSubmitStatus('success')
       // Reset form
+      setSubmitStatus('success')
       setFormData({
         name: '',
         email: '',
@@ -130,7 +130,6 @@ export default function ContactSection() {
       console.error('Submission error:', error)
       
       if (error instanceof z.ZodError) {
-        // Handle validation errors
         const fieldErrors: typeof errors = {}
         error.errors.forEach(err => {
           if (err.path.length > 0) {
@@ -398,7 +397,7 @@ export default function ContactSection() {
                   animate={{ opacity: 1, y: 0 }}
                   className="text-center text-green-600 text-sm"
                 >
-                  Thank you! I'll get back to you soon.
+                  Thank you! I&apos;ll get back to you soon.
                 </motion.p>
               )}
               {submitStatus === 'error' && (
@@ -416,4 +415,4 @@ export default function ContactSection() {
       </div>
     </motion.section>
   )
-}
+} 
