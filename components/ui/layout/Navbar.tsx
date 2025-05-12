@@ -9,7 +9,6 @@ import {
   Home, 
   User, 
   Briefcase, 
-  Code, 
   Send, 
   Menu, 
   X, 
