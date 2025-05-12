@@ -13,9 +13,9 @@ import {
 // Memoize the experiences to prevent unnecessary re-renders
 const EXPERIENCES = [
   {
-    company: 'Omnion Premedia PVT LTD',
+    company: 'PCube PVT LTD',
     position: 'DevOps Engineer',
-    duration: 'Oct 2023 - Present',
+    duration: 'Oct 2023 - Apr 2025',
     location: 'Udupi, Karnataka',
     icon: CloudCog,
     responsibilities: [
@@ -26,6 +26,20 @@ const EXPERIENCES = [
       'Configured and optimized OPNsense firewall for enhanced network security and efficient traffic management'
     ],
     technologies: ['Kubernetes', 'Docker', 'Ceph', 'Anthos', 'OPNsense', 'GitLab CI/CD']
+  },
+  {
+    company: 'Prime Computers PVT LTD',
+    position: 'Technical Support Engineer',
+    duration: 'Dec 2022 - Sep 2023',
+    location: 'Udupi, Karnataka',
+    icon: Network,
+    responsibilities: [
+      'Delivered exceptional end-user support for Mac, Linux, and Windows systems, swiftly resolving hardware/software issues',
+      'Configured and deployed customized applications based on client requirements, ensuring seamless onboarding',
+      'Managed essential networking tasks, including the setup of switches, routers, and IoT devices',
+      'Enhanced troubleshooting processes and documentation, significantly reducing issue resolution times'
+    ],
+    technologies: ['Mac OS', 'Linux', 'Windows', 'Networking', 'IoT', 'Technical Support']
   },
   {
     company: 'Reliance SMART',

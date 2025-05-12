@@ -149,12 +149,12 @@ export default function ContactSection() {
     {
       icon: MapPin,
       title: 'Location',
-      description: 'Udupi, Karnataka, India'
+      description: 'Dubai, UAE'
     },
     {
       icon: Phone,
       title: 'Phone',
-      description: '+91 8660977268'
+      description: '+971 547877919'
     }
   ]
 

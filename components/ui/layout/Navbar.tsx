@@ -25,7 +25,7 @@ export function Navbar() {
   const navItems = [
     { href: '/', label: 'Home', icon: Home },
     { href: '/about', label: 'About', icon: User },
-    { href: '/projects', label: 'Projects', icon: Code },
+    // { href: '/projects', label: 'Projects', icon: Code },
     { href: '/experience', label: 'Experience', icon: Briefcase },
     { href: '/resume', label: 'Resume', icon: FileText },
     { href: '/contact', label: 'Contact', icon: Send }
@@ -89,7 +89,7 @@ export function Navbar() {
           className="text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
           aria-label="Home"
         >
-          DevOps Portfolio
+          S K
         </Link>
 
         {/* Desktop Navigation */}

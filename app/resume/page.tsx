@@ -15,7 +15,9 @@ import {
   GitBranch,
   Database,
   Linkedin,
-  Github
+  Github,
+  Monitor,
+  Network
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { AnimatedBackground } from '@/components/ui/layout/AnimatedBackground'
@@ -25,8 +27,8 @@ export default function ResumePage() {
   const contactInfo = {
     name: 'Safwat Shabbir Khan',
     email: 'safwat.s.khan@gmail.com',
-    phone: '+91 8660977268',
-    location: 'Udupi, Karnataka',
+    phone: '+971 547877919',
+    location: 'Dubai, UAE',
     linkedin: 'linkedin.com/in/safwat-s-khan/',
     github: 'github.com/saf2k'
   }
@@ -34,9 +36,9 @@ export default function ResumePage() {
   // Professional Experience
   const professionalExperience = [
     {
-      company: 'Omnion Premedia PVT LTD',
+      company: 'PCube PVT LTD',
       position: 'DevOps Engineer',
-      duration: 'Oct 2023 - Present',
+      duration: 'Oct 2023 - Apr 2025',
       location: 'Udupi, Karnataka',
       responsibilities: [
         'Fine-tuned Kubernetes clusters, enhancing scalability by 30% and ensuring seamless microservices operations',
@@ -44,6 +46,18 @@ export default function ResumePage() {
         'Automated Docker container solutions, reducing deployment cycles by 20% and increasing portability',
         'Streamlined hybrid and multi-cloud environments with Anthos, cutting deployment time by 35% and boosting security',
         'Configured and optimized OPNsense firewall for enhanced network security and efficient traffic management'
+      ]
+    },
+    {
+      company: 'Prime Computers PVT LTD',
+      position: 'Technical Support Engineer',
+      duration: 'Dec 2022 - Sep 2023',
+      location: 'Udupi, Karnataka',
+      responsibilities: [
+        'Delivered exceptional end-user support for Mac, Linux, and Windows systems, swiftly resolving hardware/software issues',
+        'Configured and deployed customized applications based on client requirements, ensuring seamless onboarding',
+        'Managed essential networking tasks, including the setup of switches, routers, and IoT devices',
+        'Enhanced troubleshooting processes and documentation, significantly reducing issue resolution times'
       ]
     },
     {
@@ -82,6 +96,16 @@ export default function ResumePage() {
       skills: ['Kubernetes', 'Docker', 'Ceph', 'Anthos', 'Helmchart', 'Jenkins', 'GitLab CI/CD']
     },
     {
+      name: 'IT Systems & Support',
+      icon: Monitor,
+      skills: ['Windows Server', 'Linux Administration', 'Active Directory', 'Help Desk', 'System Troubleshooting', 'Hardware Support']
+    },
+    {
+      name: 'Networking',
+      icon: Network,
+      skills: ['TCP/IP', 'Routing & Switching', 'VLANs', 'Firewalls', 'VPN', 'Network Security']
+    },
+    {
       name: 'Programming Languages',
       icon: Code,
       skills: ['Golang', 'Python', 'TypeScript', 'JavaScript']
@@ -103,11 +127,33 @@ export default function ResumePage() {
     {
       title: 'E-Commerce Apparel Store',
       technologies: 'Next.js, Tailwind, Prisma, PlanetScale, TypeScript',
-      duration: 'June 2020 - Present',
+      duration: 'June 2020 - Oct 2022',
       description: [
         'Developed an Admin Portal for managing products, sizes, colors, and billboards with full CRUD functionality',
         'Built a customer-facing Storefront with real-time updates using Next.js APIs, ensuring a seamless shopping experience',
         'Utilized modern tools and frameworks for a dynamic, responsive, and scalable e-commerce platform'
+      ]
+    },
+    {
+      title: 'Enterprise IT Infrastructure Management',
+      technologies: 'Windows Server, Linux, macOS, Cisco Switches, OPNsense, Active Directory, VMware',
+      duration: 'Dec 2022 - Sep 2023',
+      description: [
+        'Managed multi-platform environment supporting Windows, Linux, and Mac systems across 200+ end-users with 99% uptime',
+        'Implemented and maintained network infrastructure including Cisco switches, firewalls, and VLANs for optimal performance',
+        'Orchestrated server room operations: rack mounting, cable management, hardware diagnostics, and component replacements',
+        'Provided rapid response IT support, resolving hardware/software issues and maintaining detailed documentation of solutions'
+      ]
+    },
+    {
+      title: 'Bare Metal Infrastructure Modernization',
+      technologies: 'Kubernetes, Ceph, Ansible, OPNsense, LDAP, VMware ESXi',
+      duration: 'Jan 2023 - Sep 2023',
+      description: [
+        'Designed and implemented a high-availability Kubernetes cluster on bare metal servers, reducing deployment time by 40%',
+        'Set up Ceph distributed storage system across physical nodes, achieving 99.9% data availability and 25% cost reduction',
+        'Automated IT infrastructure tasks using Ansible, including user management, system updates, and security configurations',
+        'Deployed OPNsense firewall and configured VLANs for network segmentation, enhancing security and performance'
       ]
     }
   ]
@@ -173,7 +219,7 @@ export default function ResumePage() {
               {contactInfo.name}
             </h1>
             <p className="text-muted-foreground text-xl mt-2">
-              DevOps Engineer | Cloud Native Specialist
+              IT Administrator | Cloud Native Specialist
             </p>
           </div>
           <div className="mt-4 md:mt-0 text-center md:text-right space-y-2">
@@ -372,7 +418,7 @@ export default function ResumePage() {
         className="max-w-5xl mx-auto text-center"
       >
         <a 
-          href="/Safwat_Khan.pdf" 
+          href="/Safwat_Resume.pdf" 
           download 
           target="_blank" 
           rel="noopener noreferrer"

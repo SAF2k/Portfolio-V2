@@ -14,16 +14,16 @@ import {
 } from 'lucide-react'
 
 const SKILLS = [
-  { name: 'Web Development', icon: Code },
-  { name: 'DevOps Engineering', icon: CloudCog },
-  { name: 'Cloud Infrastructure', icon: Server },
+  { name: 'Infrastructure as Code', icon: Code },
+  { name: 'DevOps & Security', icon: CloudCog },
+  { name: 'Cloud Native Architecture', icon: Server },
   { name: 'Continuous Learning', icon: Zap }
 ]
 
 const ACHIEVEMENTS = [
   {
     title: 'Cloud Infrastructure Optimization',
-    description: 'Successfully implemented Kubernetes and Ceph storage solutions at Omnion Premedia',
+    description: 'Successfully implemented Kubernetes and Ceph storage solutions at PCube PVT LTD',
     icon: Award
   },
   {
@@ -34,12 +34,25 @@ const ACHIEVEMENTS = [
 ]
 
 const CORE_COMPETENCIES = [
-  'Next.js & React',
+  // DevOps & Cloud
+  'Kubernetes Orchestration',
   'Docker Containerization',
-  'Kubernetes',
   'CI/CD Pipelines',
+  
+  // IT Infrastructure
+  'Windows Server Admin',
+  'Linux System Admin',
+  'Active Directory',
+  
+  // Network & Security
+  'Cisco Networking',
   'OPNsense Firewall',
-  'Cloud Security'
+  'VLAN Configuration',
+  
+  // Support & Hardware
+  'Enterprise Help Desk',
+  'Hardware Troubleshooting',
+  'Server Maintenance',
 ]
 
 export default function AboutPage() {
@@ -116,13 +129,11 @@ export default function AboutPage() {
                            text-transparent bg-clip-text">
               Professional Journey
             </h2>
-           <p className="text-base text-muted-foreground mb-4">
-             With over 3 years of web development experience and 1.5 years 
-             in DevOps, I bridge the gap between software development and 
-             infrastructure. I help businesses create robust, efficient 
-             web applications by combining coding skills with smart 
-             cloud technologies and automation strategies.
-           </p>
+            <p className="text-base text-muted-foreground mb-4">
+  With 4 years of IT administration and support experience, 3+ years in web development, and 2 years in DevOps, I excel at troubleshooting infrastructure issues and streamlining operations. I’ve managed help desk workflows, maintained network and server environments, and implemented automation to reduce downtime. By combining hands-on IT support skills with modern cloud and development practices, I empower teams to deliver reliable, high-performance applications.
+</p>
+
+
            <p className="text-base text-muted-foreground">
              My approach blends technical expertise from web development 
              and DevOps to deliver practical solutions. I focus on making 
@@ -194,13 +205,13 @@ export default function AboutPage() {
                   <h3 className="font-semibold text-xl mb-2">{name}</h3>
                   <p className="text-base text-muted-foreground">
                     {name === 'Infrastructure as Code' && 
-                      'Automating infrastructure deployment and management'}
+                      'Expertise in Terraform and Ansible for automated, version-controlled infrastructure deployment, reducing provisioning time by 60%'}
                     {name === 'Cloud Native Architecture' && 
-                      'Designing scalable and resilient cloud ecosystems'}
+                      'Designing high-availability systems using Kubernetes, microservices, and cloud-native patterns for optimal scalability and resilience'}
                     {name === 'DevOps & Security' && 
-                      'Implementing robust security and continuous integration'}
+                      'Implementing GitLab CI/CD pipelines with integrated security scanning, automated testing, and zero-downtime deployments'}
                     {name === 'Continuous Learning' && 
-                      'Staying ahead of emerging technologies and best practices'}
+                      'Actively pursuing certifications and exploring emerging technologies like containerization, service mesh, and cloud-native security'}
                   </p>
                 </div>
               </motion.div>

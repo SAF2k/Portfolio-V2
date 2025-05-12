@@ -24,7 +24,7 @@ import { z } from 'zod'
 const CONTACT_INFO = [
   {
     title: 'Location',
-    description: 'Udupi, Karnataka, India',
+    description: 'Dubai, UAE',
     icon: MapPin
   },
   {
@@ -34,7 +34,7 @@ const CONTACT_INFO = [
   },
   {
     title: 'Phone',
-    description: '+91 8660977268',
+    description: '+971 547877919',
     icon: Phone
   }
 ]
