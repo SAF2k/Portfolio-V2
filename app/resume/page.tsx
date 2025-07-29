@@ -17,7 +17,8 @@ import {
   Linkedin,
   Github,
   Monitor,
-  Network
+  Network,
+  CloudCog
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { AnimatedBackground } from '@/components/ui/layout/AnimatedBackground'
@@ -36,41 +37,54 @@ export default function ResumePage() {
   // Professional Experience
   const professionalExperience = [
     {
-      company: 'PCube PVT LTD',
-      position: 'DevOps Engineer',
-      duration: 'Oct 2023 - Apr 2025',
+      company: 'PCube Agency',
+      position: 'DevOps Engineer & IT Administrator',
+      duration: 'Oct 2022 – Apr 2025',
       location: 'Udupi, Karnataka',
+      icon: CloudCog, // Assuming CloudCog is an icon representing DevOps/Cloud
       responsibilities: [
-        'Fine-tuned Kubernetes clusters, enhancing scalability by 30% and ensuring seamless microservices operations',
-        'Deployed Ceph storage on bare metal servers, improving storage reliability by 25%',
-        'Automated Docker container solutions, reducing deployment cycles by 20% and increasing portability',
-        'Streamlined hybrid and multi-cloud environments with Anthos, cutting deployment time by 35% and boosting security',
-        'Configured and optimized OPNsense firewall for enhanced network security and efficient traffic management'
-      ]
+        'Designed and maintained CI/CD pipelines using GitLab, reducing deployment time by 35% and ensuring consistent delivery.',
+        'Managed production-grade Kubernetes clusters and Docker containers for orchestrating microservices and application components.',
+        'Implemented Infrastructure as Code using Ansible for automated provisioning, configuration, and application deployments.',
+        'Monitored system performance and availability using Prometheus, Grafana, and custom alert rules, reducing incident response times by 40%.',
+        'Administered secure networking infrastructure including OPNsense firewall, site-to-site VPNs, VLANs, and traffic shaping.',
+        'Maintained high-availability MySQL environments with MaxScale + Galera cluster for load balancing and fault tolerance.',
+        'Managed Ceph and RAID-based storage clusters for scalable and redundant data storage solutions.',
+        'Developed and maintained FTP and NFS services for internal backups and CI/CD artifact storage.',
+        'Oversaw Microsoft Azure Active Directory and Office 365 for identity management and hybrid cloud collaboration.',
+        'Created and maintained internal documentation, SOPs, and runbooks to streamline onboarding and knowledge transfer.'
+      ],
+      technologies: ['GitLab CI/CD', 'Kubernetes', 'Docker', 'Ansible', 'Prometheus', 'Grafana', 'OPNsense', 'MySQL', 'MaxScale', 'Galera', 'Ceph', 'RAID', 'FTP', 'NFS', 'Azure Active Directory', 'Office 365']
     },
     {
-      company: 'Prime Computers PVT LTD',
-      position: 'Technical Support Engineer',
-      duration: 'Dec 2022 - Sep 2023',
+      company: 'Prime Computers Pvt Ltd',
+      position: 'IT Support Engineer',
+      duration: 'Apr 2021 – Sep 2022',
       location: 'Udupi, Karnataka',
+      icon: Network, // Assuming Network is an icon representing IT Support/Networking
       responsibilities: [
-        'Delivered exceptional end-user support for Mac, Linux, and Windows systems, swiftly resolving hardware/software issues',
-        'Configured and deployed customized applications based on client requirements, ensuring seamless onboarding',
-        'Managed essential networking tasks, including the setup of switches, routers, and IoT devices',
-        'Enhanced troubleshooting processes and documentation, significantly reducing issue resolution times'
-      ]
+        'Provided support across on-prem and cloud systems, resolving incidents in Windows/Linux/macOS environments.',
+        'Deployed and configured network components, POS systems, and endpoint security across branches.',
+        'Wrote basic Bash and PowerShell scripts for automating repetitive support tasks and system checks.',
+        'Ensured 99% uptime for retail billing infrastructure and implemented backup strategies.',
+        'Monitored systems using tools like Zabbix and performed log reviews for proactive issue mitigation.',
+        'Streamlined onboarding with Office 365 automation and user provisioning in Active Directory.'
+      ],
+      technologies: ['Windows', 'Linux', 'macOS', 'Networking', 'POS Systems', 'Endpoint Security', 'Bash', 'PowerShell', 'Zabbix', 'Office 365', 'Active Directory']
     },
     {
-      company: 'Reliance SMART',
-      position: 'IT Support & Billing',
-      duration: 'May 2021 - Nov 2022',
+      company: 'Crystal Systems',
+      position: 'Junior System Assembler & Technician',
+      duration: 'Jan 2019 – Mar 2020',
       location: 'Udupi, Karnataka',
+      icon: Server,
       responsibilities: [
-        'Maintained 99% uptime for billing systems and in-store technology',
-        'Resolved technical issues with a 90% success rate, ensuring smooth customer service',
-        'Efficiently managed billing counters with 98% transaction accuracy, minimizing downtime',
-        'Acquired hands-on experience in retail IT systems, improving operational efficiency by 15%'
-      ]
+        'Assembled and configured custom desktops for development, gaming, and business use cases.',
+        'Installed Linux and Windows OS images, drivers, and software using bootable tools and prebuilt scripts.',
+        'Offered post-deployment troubleshooting and performance tuning based on user needs.',
+        'Built systems with focus on thermal management, cable management, and component compatibility.'
+      ],
+      technologies: ['Linux', 'Windows', 'Hardware Assembly', 'Troubleshooting']
     }
   ]
 
@@ -88,75 +102,141 @@ export default function ResumePage() {
     }
   ]
 
-  // Technical Skills
-  const skillCategories = [
-    {
-      name: 'DevOps & Cloud',
-      icon: Server,
-      skills: ['Kubernetes', 'Docker', 'Ceph', 'Anthos', 'Helmchart', 'Jenkins', 'GitLab CI/CD']
-    },
-    {
-      name: 'IT Systems & Support',
-      icon: Monitor,
-      skills: ['Windows Server', 'Linux Administration', 'Active Directory', 'Help Desk', 'System Troubleshooting', 'Hardware Support']
-    },
-    {
-      name: 'Networking',
-      icon: Network,
-      skills: ['TCP/IP', 'Routing & Switching', 'VLANs', 'Firewalls', 'VPN', 'Network Security']
-    },
-    {
-      name: 'Programming Languages',
-      icon: Code,
-      skills: ['Golang', 'Python', 'TypeScript', 'JavaScript']
-    },
-    {
-      name: 'Web Development',
-      icon: GitBranch,
-      skills: ['Next.js', 'React.js', 'Node.js', 'Tailwind', 'Prisma']
-    },
-    {
-      name: 'Version Control',
-      icon: Database,
-      skills: ['GitLab', 'GitHub']
-    }
-  ]
+// Technical Skills
+const skillCategories = [
+  {
+    name: 'DevOps & Cloud',
+    icon: Server,
+    skills: [
+      'Kubernetes', 
+      'Docker', 
+      'Ceph', 
+      'Anthos', 
+      'Helm Charts',   // fixed spacing & plural for Helm
+      'Jenkins', 
+      'GitLab CI/CD',
+      'Terraform',
+      'Prometheus',
+      'Grafana',
+      'AWS',
+      'Azure'
+    ],
+  },
+  {
+    name: 'IT Systems & Support',
+    icon: Monitor,
+    skills: [
+      'Windows Server', 
+      'Linux Administration', 
+      'Active Directory', 
+      'Help Desk Support', 
+      'System Troubleshooting', 
+      'Hardware Support',
+      'Virtualization (VMware, Hyper-V)',
+      'Backup & Recovery'
+    ],
+  },
+  {
+    name: 'Networking',
+    icon: Network,
+    skills: [
+      'TCP/IP', 
+      'Routing & Switching', 
+      'VLANs', 
+      'Firewalls', 
+      'VPN', 
+      'Network Security',
+      'DNS', 
+      'Load Balancing',
+      'Wireless Networking'
+    ],
+  },
+  {
+    name: 'Programming Languages',
+    icon: Code,
+    skills: [
+      'Golang', 
+      'Python', 
+      'TypeScript', 
+      'JavaScript', 
+      'Shell Scripting (Bash)'
+    ],
+  },
+  {
+    name: 'Web Development',
+    icon: GitBranch,
+    skills: [
+      'Next.js', 
+      'React.js', 
+      'Node.js', 
+      'Tailwind CSS',  // added "CSS" for clarity
+      'Prisma', 
+      'REST APIs',
+      'GraphQL'
+    ],
+  },
+  {
+    name: 'Version Control',
+    icon: Database,
+    skills: [
+      'GitLab', 
+      'GitHub', 
+      'Bitbucket'
+    ],
+  },
+];
+
 
   // Projects
   const projects = [
     {
-      title: 'E-Commerce Apparel Store',
-      technologies: 'Next.js, Tailwind, Prisma, PlanetScale, TypeScript',
-      duration: 'June 2020 - Oct 2022',
+      title: 'Kubernetes Bare-Metal Cluster Setup',
+      technologies: 'Kubernetes, Docker, GitLab Container Registry, CI/CD Tools',
+      duration: 'Jan 2023 - Apr 2023',
       description: [
-        'Developed an Admin Portal for managing products, sizes, colors, and billboards with full CRUD functionality',
-        'Built a customer-facing Storefront with real-time updates using Next.js APIs, ensuring a seamless shopping experience',
-        'Utilized modern tools and frameworks for a dynamic, responsive, and scalable e-commerce platform'
+        'Configured and deployed Kubernetes cluster on bare-metal servers.',
+        'Set up Docker container runtime and integrated GitLab Container Registry.',
+        'Installed essential tools to support CI/CD pipelines.'
       ]
     },
     {
-      title: 'Enterprise IT Infrastructure Management',
-      technologies: 'Windows Server, Linux, macOS, Cisco Switches, OPNsense, Active Directory, VMware',
-      duration: 'Dec 2022 - Sep 2023',
+      title: 'Storage Infrastructure Setup',
+      technologies: 'Ceph, RAID Storage',
+      duration: 'May 2023 - Jul 2023',
       description: [
-        'Managed multi-platform environment supporting Windows, Linux, and Mac systems across 200+ end-users with 99% uptime',
-        'Implemented and maintained network infrastructure including Cisco switches, firewalls, and VLANs for optimal performance',
-        'Orchestrated server room operations: rack mounting, cable management, hardware diagnostics, and component replacements',
-        'Provided rapid response IT support, resolving hardware/software issues and maintaining detailed documentation of solutions'
+        'Designed and implemented Ceph distributed storage system.',
+        'Configured RAID storage for enhanced redundancy and performance.'
       ]
     },
     {
-      title: 'Bare Metal Infrastructure Modernization',
-      technologies: 'Kubernetes, Ceph, Ansible, OPNsense, LDAP, VMware ESXi',
-      duration: 'Jan 2023 - Sep 2023',
+      title: 'FTP Server Deployment',
+      technologies: 'FTP, Network Security',
+      duration: 'Aug 2023 - Sep 2023',
       description: [
-        'Designed and implemented a high-availability Kubernetes cluster on bare metal servers, reducing deployment time by 40%',
-        'Set up Ceph distributed storage system across physical nodes, achieving 99.9% data availability and 25% cost reduction',
-        'Automated IT infrastructure tasks using Ansible, including user management, system updates, and security configurations',
-        'Deployed OPNsense firewall and configured VLANs for network segmentation, enhancing security and performance'
+        'Set up FTP server for secure internal and external file access.',
+        'Configured user permissions and firewall rules for access control.'
+      ]
+    },
+    {
+      title: 'Enterprise Firewall Implementation',
+      technologies: 'OPNsense, Firewall, High Availability, Multi-ISP',
+      duration: 'Oct 2023 - Dec 2023',
+      description: [
+        'Planned and deployed OPNsense firewall with dual ISP interfaces.',
+        'Configured load balancing, failover, and high availability with two active firewalls.'
+      ]
+    },
+    {
+      title: 'Network Infrastructure Planning and Setup',
+      technologies: 'Networking, VLAN, Switch Stacking',
+      duration: 'Jan 2024 - Feb 2024',
+      description: [
+        'Designed and implemented wiring and network setup for server rooms.',
+        'Ensured high availability and redundancy with VLAN segmentation and switch stacking.'
       ]
     }
   ]
+  
 
   // Personal Strengths
   const strengths = [

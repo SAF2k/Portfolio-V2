@@ -13,50 +13,56 @@ import {
 // Memoize the experiences to prevent unnecessary re-renders
 const EXPERIENCES = [
   {
-    company: 'PCube PVT LTD',
-    position: 'DevOps Engineer',
-    duration: 'Oct 2023 - Apr 2025',
+    company: 'PCube Agency',
+    position: 'DevOps Engineer & IT Administrator',
+    duration: 'Oct 2022 – Apr 2025',
     location: 'Udupi, Karnataka',
-    icon: CloudCog,
+    icon: CloudCog, // Assuming CloudCog is an icon representing DevOps/Cloud
     responsibilities: [
-      'Fine-tuned Kubernetes clusters, enhancing scalability by 30% and ensuring seamless microservices operations',
-      'Deployed Ceph storage on bare metal servers, improving storage reliability by 25%',
-      'Automated Docker container solutions, reducing deployment cycles by 20% and increasing portability',
-      'Streamlined hybrid and multi-cloud environments with Anthos, cutting deployment time by 35% and boosting security',
-      'Configured and optimized OPNsense firewall for enhanced network security and efficient traffic management'
+      'Designed and maintained CI/CD pipelines using GitLab, reducing deployment time by 35% and ensuring consistent delivery.',
+      'Managed production-grade Kubernetes clusters and Docker containers for orchestrating microservices and application components.',
+      'Implemented Infrastructure as Code using Ansible for automated provisioning, configuration, and application deployments.',
+      'Monitored system performance and availability using Prometheus, Grafana, and custom alert rules, reducing incident response times by 40%.',
+      'Administered secure networking infrastructure including OPNsense firewall, site-to-site VPNs, VLANs, and traffic shaping.',
+      'Maintained high-availability MySQL environments with MaxScale + Galera cluster for load balancing and fault tolerance.',
+      'Managed Ceph and RAID-based storage clusters for scalable and redundant data storage solutions.',
+      'Developed and maintained FTP and NFS services for internal backups and CI/CD artifact storage.',
+      'Oversaw Microsoft Azure Active Directory and Office 365 for identity management and hybrid cloud collaboration.',
+      'Created and maintained internal documentation, SOPs, and runbooks to streamline onboarding and knowledge transfer.'
     ],
-    technologies: ['Kubernetes', 'Docker', 'Ceph', 'Anthos', 'OPNsense', 'GitLab CI/CD']
+    technologies: ['GitLab CI/CD', 'Kubernetes', 'Docker', 'Ansible', 'Prometheus', 'Grafana', 'OPNsense', 'MySQL', 'MaxScale', 'Galera', 'Ceph', 'RAID', 'FTP', 'NFS', 'Azure Active Directory', 'Office 365']
   },
   {
-    company: 'Prime Computers PVT LTD',
-    position: 'Technical Support Engineer',
-    duration: 'Dec 2022 - Sep 2023',
+    company: 'Prime Computers Pvt Ltd',
+    position: 'IT Support Engineer',
+    duration: 'Apr 2021 – Sep 2022',
     location: 'Udupi, Karnataka',
-    icon: Network,
+    icon: Network, // Assuming Network is an icon representing IT Support/Networking
     responsibilities: [
-      'Delivered exceptional end-user support for Mac, Linux, and Windows systems, swiftly resolving hardware/software issues',
-      'Configured and deployed customized applications based on client requirements, ensuring seamless onboarding',
-      'Managed essential networking tasks, including the setup of switches, routers, and IoT devices',
-      'Enhanced troubleshooting processes and documentation, significantly reducing issue resolution times'
+      'Provided support across on-prem and cloud systems, resolving incidents in Windows/Linux/macOS environments.',
+      'Deployed and configured network components, POS systems, and endpoint security across branches.',
+      'Wrote basic Bash and PowerShell scripts for automating repetitive support tasks and system checks.',
+      'Ensured 99% uptime for retail billing infrastructure and implemented backup strategies.',
+      'Monitored systems using tools like Zabbix and performed log reviews for proactive issue mitigation.',
+      'Streamlined onboarding with Office 365 automation and user provisioning in Active Directory.'
     ],
-    technologies: ['Mac OS', 'Linux', 'Windows', 'Networking', 'IoT', 'Technical Support']
+    technologies: ['Windows', 'Linux', 'macOS', 'Networking', 'POS Systems', 'Endpoint Security', 'Bash', 'PowerShell', 'Zabbix', 'Office 365', 'Active Directory']
   },
   {
-    company: 'Reliance SMART',
-    position: 'IT Support & Billing',
-    duration: 'May 2021 - Nov 2022',
+    company: 'Crystal Systems',
+    position: 'Junior System Assembler & Technician',
+    duration: 'Jan 2019 – Mar 2020',
     location: 'Udupi, Karnataka',
     icon: Server,
     responsibilities: [
-      'Maintained 99% uptime for billing systems and in-store technology',
-      'Resolved technical issues with a 90% success rate, ensuring smooth customer service',
-      'Efficiently managed billing counters with 98% transaction accuracy, minimizing downtime',
-      'Acquired hands-on experience in retail IT systems, improving operational efficiency by 15%'
+      'Assembled and configured custom desktops for development, gaming, and business use cases.',
+      'Installed Linux and Windows OS images, drivers, and software using bootable tools and prebuilt scripts.',
+      'Offered post-deployment troubleshooting and performance tuning based on user needs.',
+      'Built systems with focus on thermal management, cable management, and component compatibility.'
     ],
-    technologies: ['Billing Systems', 'IT Support', 'Retail Technology']
+    technologies: ['Linux', 'Windows', 'Hardware Assembly', 'Troubleshooting']
   }
-] as const
-
+] as const;
 export default function ExperiencePage() {
   // Use static variants to prevent hydration mismatches
   const containerVariants = {
